@@ -1,0 +1,4 @@
+/* You can add global styles to this file, and also import other style files */
+/*import are added here not in angular.json file coz angular.json css does not mantain order of files added in css tag so we import in style.css file*/
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../node_modules/font-awesome/css/font-awesome.min.css';
