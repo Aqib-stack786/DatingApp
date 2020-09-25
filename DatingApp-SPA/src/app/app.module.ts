@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,13 +17,21 @@ import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { AlertifyService } from './_services/alertify.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { MemberListComponent } from './member-list/member-list.component';
+import { ListsComponent } from './lists/lists.component';
+import { MessagesComponent } from './messages/messages.component';
+import { appRoutes } from './routes';
+import { AuthGuard } from './_guards/auth.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
       HomeComponent,
-      RegisterComponent
+      RegisterComponent,
+      MemberListComponent,
+      ListsComponent,
+      MessagesComponent
    ],
   imports: [
     BrowserModule,
@@ -30,12 +40,14 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     FormsModule,
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
+    RouterModule.forRoot(appRoutes)
     // CommonModule,
   ],
   providers: [
     AuthService,
     ErrorInterceptorProvider,
-    AlertifyService
+    AlertifyService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
