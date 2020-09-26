@@ -1,9 +1,11 @@
+using System;
 using Microsoft.AspNetCore.Http;
 
 namespace DatingApp.API.Helpers
 {
     public static class Extensions
     {
+        // Extension for HttResponse
         public static void AddApplicationError(this HttpResponse response, string message)
         {
             response.Headers.Add("Access-Control-Expose-Headers", "Authorization, Application-Error");
@@ -25,6 +27,15 @@ namespace DatingApp.API.Helpers
             // response.Headers.Add("Access-Control-Allow-Credentials", "true");
             // response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:4200");
             // response.Headers.Add("Access-Control-Expose-Headers", "TestHeaderToExpose");
+        }
+
+        // Extension For System.DateTime
+        public static int CalculateAge(this DateTime theDateTime){
+            var age = DateTime.Today.Year - theDateTime.Year;
+            if(theDateTime.AddYears(age) > DateTime.Today){
+                age--;
+            }
+            return age;
         }
     }
 }
